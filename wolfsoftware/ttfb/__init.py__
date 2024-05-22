@@ -1,0 +1,11 @@
+"""
+wolfsoftware.ttfb.
+
+A simple Python utility to display the time to getting the first byte from a given website url.
+"""
+import importlib.metadata
+
+try:
+    __version__: str = importlib.metadata.version('wolfsoftware.drawlines')
+except importlib.metadata.PackageNotFoundError:
+    __version__ = 'unknown'
