@@ -17,8 +17,9 @@ Modules:
 
 import sys
 
+from wolfsoftware.notify import system_message
+
 from .cli import run
-from .notify import system
 
 
 def main() -> None:
@@ -34,7 +35,7 @@ def main() -> None:
     try:
         run()
     except KeyboardInterrupt:
-        system("\n[*] Exiting Program\n")
+        print(system_message("\n[*] Exiting Program\n"))
         sys.exit(1)
 
 

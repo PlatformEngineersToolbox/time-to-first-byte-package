@@ -3,8 +3,8 @@ message: If you use this software, please cite it using these metadata.
 title: Time to First Byte
 abstract: Display the time-to-first-byte for any given url.
 type: software
-version: 0.1.0
-date-released: 2024-05-22
+version: 0.1.1
+date-released: 2024-05-23
 repository-code: https://github.com/PlatformEngineersToolbox/time-to-first-byte-python
 keywords:
   - "Wolf Software"

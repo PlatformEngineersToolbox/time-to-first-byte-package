@@ -21,10 +21,10 @@ import sys
 
 import subprocess  # nosec B404
 
+from wolfsoftware.notify import error_message
 from wolfsoftware.prereqs import check_prerequisite, PrerequisiteCheckError
 
 from .globals import prerequisite_commands
-from .notify import error
 
 
 def check_prereqs() -> dict:
@@ -45,7 +45,7 @@ def check_prereqs() -> dict:
         command_paths: dict = check_prerequisite(prerequisite_commands)
         return command_paths
     except PrerequisiteCheckError as errors:
-        error("Prerequisite check failed:")
+        print(error_message("Prerequisite check failed:"))
         for err in errors.errors:
             print(err)
         sys.exit(1)
@@ -66,7 +66,7 @@ def validate_url(url) -> None:
         If the URL does not exist or is unreachable, prints an error message and exits the program.
     """
     if not isinstance(url, str) or not url.startswith(('http://', 'https://')):
-        error("Invalid URL - must start with http:// or https://")
+        print(error_message("Invalid URL - must start with http:// or https://"))
         sys.exit(1)
 
     command: list[str] = ['curl', '-o', '/dev/null', '--silent', '--head', '--fail', '--connect-timeout', '1', url]
@@ -75,13 +75,13 @@ def validate_url(url) -> None:
             command, text=True, check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 
         if result.returncode != 0:
-            error(f"{url} does not exist - aborting")
+            print(error_message(f"{url} does not exist - aborting"))
             sys.exit(1)
 
     except subprocess.CalledProcessError:
-        error(f"{url} does not exist - aborting")
+        print(error_message(f"{url} does not exist - aborting"))
         sys.exit(1)
 
     except Exception:
-        error(f"An unexpected error occurred while checking {url}")
+        print(error_message(f"An unexpected error occurred while checking {url}"))
         sys.exit(1)
