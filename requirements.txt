@@ -1,5 +1,4 @@
 colorama==0.4.6
-setuptools==70.0.0
 wolfsoftware.drawlines==0.1.1
 wolfsoftware.notify==0.1.0
 wolfsoftware.prereqs==0.1.2
