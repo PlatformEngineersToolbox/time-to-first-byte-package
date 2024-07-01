@@ -1,4 +1,4 @@
 colorama==0.4.6
 wolfsoftware.drawlines==0.1.3
-wolfsoftware.notify==0.1.0
+wolfsoftware.notify==0.1.2
 wolfsoftware.prereqs==0.1.4
